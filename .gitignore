@@ -1,0 +1,6 @@
+.DS_Store
+
+*.pro.user
+
+## A symlink to the compiled program
+/examples/feeding
