@@ -95,7 +95,7 @@ output subdirectory.
         ./meshes cube 2 square-2.obj
         ./meshes cube 10 square-10.obj
 
-When done, zip your entire `meshes` directory along with the output
+* When done, zip your entire `meshes` directory along with the output
 subdirectory and a `Notes.txt` file as `hw05_lastname_firstname.zip`
 and upload your solution to Blackboard before the deadline. Your
 `Notes.txt` should describe any known issues or extra features. Your
