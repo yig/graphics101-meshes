@@ -149,6 +149,10 @@ bool Mesh::loadFromOBJ( const std::string& path ) {
     
     // Open the file.
     ifstream mesh( path );
+    if( !mesh ) {
+        cerr << "ERROR: Unable to access path: " << path << '\n';
+        return false;
+    }
     while( !( mesh >> ws ).eof() ) {
         // Get each line.
         string line;
@@ -179,14 +183,24 @@ bool Mesh::loadFromOBJ( const std::string& path ) {
             texcoords.push_back( vec2( x,y ) );
         }
         else if( first_word == "f" ) {
-            string fb[3];
-            linestream >> fb[0] >> fb[1] >> fb[2];
+            std::vector< string > fb;
+            fb.reserve( 4 );
+            while( !( linestream >> ws ).eof() ) {
+                string b;
+                linestream >> b;
+                fb.push_back( b );
+            }
+            if( fb.size() < 3 ) {
+                cerr << "ERROR: Skipping a face with less than 3 vertices.\n";
+                continue;
+            }
             
             // OBJ files are 1-indexed
             // Negative indices subtract.
             
-            VertexBundle vb[3];
-            for( int i = 0; i < 3; ++i ) {
+            std::vector< VertexBundle > vb;
+            vb.resize( fb.size() );
+            for( int i = 0; i < vb.size(); ++i ) {
                 // Convert the string separated by slashes to integers.
                 vb[i] = VertexBundle( fb[i] );
                 
@@ -205,24 +219,30 @@ bool Mesh::loadFromOBJ( const std::string& path ) {
             assert( face_normals.size() == 0 || face_normals.size() == face_positions.size() );
             assert( face_texcoords.size() == 0 || face_texcoords.size() == face_positions.size() );
             
-            // Add the position face.
-            face_positions.emplace_back( vb[0].v, vb[1].v, vb[2].v );
-            
-            // If one vertex bundle has normals or texcoords,
-            // they all must have normals/texcoords.
-            // We have already converted the OBJ coordinates back to 0-indexing,
-            // so check for -1.
-            assert( ( vb[0].vn == -1 ) == ( vb[1].vn == -1 ) );
-            assert( ( vb[0].vn == -1 ) == ( vb[2].vn == -1 ) );
-            assert( ( vb[0].vt == -1 ) == ( vb[1].vt == -1 ) );
-            assert( ( vb[0].vt == -1 ) == ( vb[2].vt == -1 ) );
-            
-            if( vb[0].vn != -1 ) {
-                face_normals.emplace_back( vb[0].vn, vb[1].vn, vb[2].vn );
+            // Add all the faces.
+            if( vb.size() != 3 ) {
+                cerr << "Triangulating a face with " << vb.size() << " vertices.\n";
             }
-            
-            if( vb[0].vt != -1 ) {
-                face_texcoords.emplace_back( vb[0].vt, vb[1].vt, vb[2].vt );
+            for( int i = 2; i < vb.size(); ++i ) {
+                // Add the position face.
+                face_positions.emplace_back( vb[0].v, vb[i-1].v, vb[i].v );
+                
+                // If one vertex bundle has normals or texcoords,
+                // they all must have normals/texcoords.
+                // We have already converted the OBJ coordinates back to 0-indexing,
+                // so check for -1.
+                assert( ( vb[0].vn == -1 ) == ( vb[i-1].vn == -1 ) );
+                assert( ( vb[0].vn == -1 ) == ( vb[i].vn == -1 ) );
+                assert( ( vb[0].vt == -1 ) == ( vb[i-1].vt == -1 ) );
+                assert( ( vb[0].vt == -1 ) == ( vb[i].vt == -1 ) );
+                
+                if( vb[0].vn != -1 ) {
+                    face_normals.emplace_back( vb[0].vn, vb[i-1].vn, vb[i].vn );
+                }
+                
+                if( vb[0].vt != -1 ) {
+                    face_texcoords.emplace_back( vb[0].vt, vb[i-1].vt, vb[i].vt );
+                }
             }
         }
     }
