@@ -222,7 +222,7 @@ have the entire texture mapped onto it. There is a single member
 variable, `int m_slices_edge`. Each edge of your cube should have
 `m_slices_edge` vertices (so two is the minimum), and each face of your
 cube should have `m_slices_edge*m_slices_edge` vertices. There will
-be a total of `(m_slices_edge-2)*(m_slices_edge-2)*6 + m_slices_edge*12 + 8`
+be a total of `(m_slices_edge-2)*(m_slices_edge-2)*6 + (m_slices_edge-2)*12 + 8`
 positions (since each edge is shared by two
 faces, and each corner is shared by three faces). There will be a total
 of 6 normals (one per face). There will be a total of
