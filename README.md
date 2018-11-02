@@ -234,32 +234,35 @@ compute a normal for each position by averaging the (flat) normal of
 each triangle touching the vertex. You can do this by initializing a
 running tally of the average normal for each vertex. Each triangle uses
 its positions to compute a normal via the cross product. Add this normal
-to the running tally for. You must support two modes, unweighted, and
-angle-weighted. If the strategy parameter is `Unweighted`, simply
-normalize the normal before adding it to the running tally. If the
-strategy parameter is `AngleWeighted`, normalize the normal and then scale
-it by the angle of the triangle at the vertex.
+to the running tally for the vertex. If the strategy parameter is `Unweighted`,
+simply normalize the normal before adding it to the running tally. For bonus,
+if the strategy parameter is `AngleWeighted`, normalize the normal and then scale
+it by the angle of the triangle at the vertex before adding it to the running tally.
 
     * **(10 points)** Without a half-edge data structure. Iterate over each
-triangle. Add its normal, unweighted or angle-weighted, to the running
+triangle. Add its unweighted normal to the running
 tally for each of its three vertices. The function signature is:
 
             void Mesh::computeNormals( MeshNormalStrategy strategy )
 
+        * **(bonus 5 points)** Add each triangle's `AngleWeighted` normal to the running tally.
+
     * **(20 points)** With a half-edge data structure. Iterate over each
 vertex. Call `halfedges.vertex_face_neighbors( vertex_index )` to
 obtain the triangles touching a vertex as a vector of indices into
-`.face_positions`. Then iterate over the triangles and add their normals,
-unweighted or angle-weighted, to the running tally for the vertex. The
-function signature is:
+`.face_positions`. Then iterate over the triangles and add their
+unweighted normals to the running tally for the vertex.
+The function signature is:
 
             void Mesh::computeNormalsHalfEdge( MeshNormalStrategy strategy )
 
-    Note that the half-edge function `.vertex_face_neighbors()` is not
+        Note that the half-edge function `.vertex_face_neighbors()` is not
 written for you. You must fill in the code for this function in
 `halfedges.cpp`. It is a very short function. Follow the provided outline.
 Consult `HalfEdgeTriMesh::vertex_vertex_neighbors()` for reference; it
 differs from `.vertex_face_neighbors()` by exactly one line.
+
+        * **(bonus 5 points)** Add each triangle's `AngleWeighted` normal to the running tally.
 
 * **(10 points)** Mesh normalization. Your code goes in `mesh.cpp`.
 
