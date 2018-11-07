@@ -305,6 +305,8 @@ portion of the matrix to the normals. The function signature is:
 Tips
 ----
 
+* There is some relevant pseudocode in the `docs` directory.
+
 * For debugging an OBJ that you program saves, I highly recommend the free
 program [meshLab](http://www.meshlab.net/) ([http://www.meshlab.net/](http://www.meshlab.net/)):
 
