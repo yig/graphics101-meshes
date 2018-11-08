@@ -305,7 +305,7 @@ portion of the matrix to the normals. The function signature is:
 Tips
 ----
 
-* There is some relevant pseudocode in the `docs` directory.
+* There is some relevant pseudocode in the `docs` directory. Consider that a cylinder, sphere, cone, and torus are all rectangles rolled up in different ways, with one edge glued (two in the case of the torus) and possible a north or south pole attached.
 
 * For debugging an OBJ that you program saves, I highly recommend the free
 program [meshLab](http://www.meshlab.net/) ([http://www.meshlab.net/](http://www.meshlab.net/)):
