@@ -19,8 +19,9 @@ def compute_normals_without_halfedge():
     ## for each face, for each vertex of the face, accumulate normals
     for face in faces:
         n = face normal
+        # iterate over the three vertices in the triangle
         for v in face:
-            n[ v index ] += face normal
+            normals[ v index ] += face normal
     
     ## normalize
     for n in normals:
