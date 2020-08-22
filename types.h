@@ -44,6 +44,12 @@ namespace graphics101 {
     
     typedef ivec3 Triangle;
     typedef std::vector< Triangle > TriangleVec;
+    
+    typedef std::string string;
+    
+    // Constants
+    const double infinity = std::numeric_limits<real>::infinity();
+    const double pi = 3.14159265358979323846264338327950288;
 }
 
 #endif /* __types_h__ */

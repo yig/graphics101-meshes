@@ -1,6 +1,26 @@
 Computer Graphics - Homework Assignment 5 - Meshes
 ==================================================
 
+Overview:
+---------
+
+In this assignment, you will be implementing a bit of mesh processing.
+You will tessellate a couple of shapes (cylinder and sphere), which
+means that you will create triangle meshes for them. You will compute
+the axis-aligned bounding box of a mesh and transform it to the unit
+cube. You will implement an algorithm for computing normals for meshes
+which don't have them. You will interact with a half-edge data
+structure. Your tessellation will create shapes like this:
+
+![sphere with five lines of longitude](docs/images/sphere-5-100-snapshot.png)
+![earth](docs/images/sphere-earth.png)
+![cylinder](docs/images/cylinder-100-2.png)
+![cone](docs/images/cone-30-3-snapshot.png)
+![torus](docs/images/torus-30-30-.25-snapshot.png)
+
+Background reading for this assignment: Chapter 12.1 *Triangle Meshes* from *Fundamentals of Computer Graphics (4th edition)* by Steve Marschner and Peter Shirley.
+
+
 Goals:
 ------
 
@@ -23,30 +43,14 @@ positions.
 Getting Started & Handing In:
 -----------------------------
 
-* This is a programming assignment. The code framework is provided here.
+* Download or clone this code repository. Don't fork it on GitHub, or else your code will be visible to everyone.
 
-* The code will be written in C++. You are encouraged to write helper
-functions as you like.
+* Follow the instructions to install a working development environment: <https://github.com/yig/graphics101> . You do not need to install Qt or any other external libraries for this assignment.
 
 * The program is a command line program. The code for this
 project makes use of only the C++ standard library and `glm`.
-There is a Qt Creator project file (`meshes.pro`) so you can write,
-compile, debug, and run your program in an IDE you are familiar with.
-Although it doesn't use any of Qt, the Qt Creator development
-environment is still convenient.
 
-* You should have already successfully installed the open source version
-of the Qt environment from the last assignment:
-<https://www.qt.io/download-open-source>
-(At the time of writing, version 5.11 is the newest version. Any 5.x
-version should work. The installer, by default, includes all versions of
-Qt. Save space by installing only the most recent version and a
-compiler.) Mac users with [Homebrew](https://brew.sh/)
-can alternatively install via: `brew install qt` and `brew cask install qt-creator`.
-
-* Download the assignment. This will create a folder named `meshes`. Open the
-file named `meshes.pro`. This should launch the Qt Creator development
-environment (IDE).
+* You are encouraged to write helper functions as you like.
 
 * Build and run the code. The code should compile, but it will complain
 when running about not having enough arguments. You should see a message
@@ -95,12 +99,14 @@ output subdirectory.
         ./meshes cube 2 square-2.obj
         ./meshes cube 10 square-10.obj
 
+* You are encouraged to share blooper images you create while implementing the assignment on Piazza.
+
+* Create a file named `Notes.txt` in the folder. Describe any known issues or extra features. Name people in the class who deserve a star for
+helping you (not by giving your their code!).
+
 * When done, zip your entire `meshes` directory along with the output
-subdirectory and a `Notes.txt` file as `hw05_lastname_firstname.zip`
-and upload your solution to Blackboard before the deadline. Your
-`Notes.txt` should describe any known issues or extra features. Your
-`Notes.txt` should also note the names of people in the class who
-deserve a star for helping you (not by giving your their code!).
+subdirectory and your `Notes.txt` file as `hw05_lastname_firstname.zip`.
+Upload your solution to Blackboard before the deadline.
 
 * **THIS IS AN INDIVIDUAL, NOT A GROUP ASSIGNMENT. That means all code
 written for this assignment should be original! Although you are
@@ -109,22 +115,6 @@ code that is substantially the same will be considered cheating.** In your
 `Notes.txt`, please note who deserves a star (who helped you with the
 assignment).
 
-Overview:
----------
-
-In this assignment, you will be implementing a bit of mesh processing.
-You will tessellate a couple of shapes (cylinder and sphere), which
-means that you will create triangle meshes for them. You will compute
-the axis-aligned bounding box of a mesh and transform it to the unit
-cube. You will implement an algorithm for computing normals for meshes
-which don't have them. You will interact with a half-edge data
-structure. Your tessellation will create shapes like this:
-
-![sphere with five lines of longitude](docs/images/sphere-5-100-snapshot.png)
-![earth](docs/images/sphere-earth.png)
-![cylinder](docs/images/cylinder-100-2.png)
-![cone](docs/images/cone-30-3-snapshot.png)
-![torus](docs/images/torus-30-30-.25-snapshot.png)
 
 Rubric:
 -------
@@ -404,13 +394,8 @@ vectors. The function that computes arccosine is `acos()`. Call it on the
 dot product of two of the triangle's edges, normalized. Note that `acos()`
 is very strict about its input being between -1 and 1. Due to floating
 point issues, sometimes the dot product will produce a number epsilon
-out of range. Use `clamp()` or `min()` and `max()` to ensure the value you
+out of range. Use `glm::clamp()` or `min()` and `max()` to ensure the value you
 pass to acos() is between -1 and 1.
 
-* You can access the constant pi aka π = 3.14... via the constant `M_PI`
-(defined in the `#include <cmath>` header) or by calling `glm::pi()`.
-
-Qt functions you need for this assignment
------------------------------------------
-
-**None**
+* You can access the constant pi aka π = 3.14... via the constant `pi`
+(defined in the `#include "types.h"` header) or by calling `glm::pi()`.
