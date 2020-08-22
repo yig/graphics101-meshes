@@ -2,13 +2,13 @@
 #define __types_h__
 
 // We do this to get everything glm supports.
-#include <glm/glm.hpp>
+#include "glm/glm.hpp"
 // We could only include the subset we need to speed up compile times.
 /*
-#include <glm/vec2.hpp>
-#include <glm/vec3.hpp>
-#include <glm/vec4.hpp>
-#include <glm/mat4x4.hpp> // glm::mat4
+#include "glm/vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec4.hpp"
+#include "glm/mat4x4.hpp" // glm::mat4
 */
 
 #include <vector>
@@ -16,11 +16,9 @@
 
 #include <cassert>
 
-#include <cmath> // std::sqrt(), M_PI
-#ifndef M_PI
-#define M_PI 3.14159265358979323846264338327950288
-#endif
+#include <cmath> // std::sqrt()
 #include <algorithm> // std::min(), std::max()
+#include <limits> // infinity
 
 namespace graphics101 {
     typedef float real;

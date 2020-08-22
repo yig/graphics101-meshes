@@ -1,6 +1,13 @@
 .DS_Store
+Thumbs.db
 
+*~
+
+# Common CMake directory names
+/build
+/Release
+/Debug
+
+# Qt Creator creates this
+CMakeLists.txt.user
 *.pro.user
-
-## A symlink to the compiled program
-/examples/feeding
