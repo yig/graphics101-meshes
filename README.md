@@ -106,6 +106,7 @@ helping you (not by giving your their code!).
 
 * When done, zip your entire `meshes` directory along with the output
 subdirectory and your `Notes.txt` file as `hw05_lastname_firstname.zip`.
+Do not include your `build` directory. It is large and unnecessary.
 Upload your solution to Blackboard before the deadline.
 
 * **THIS IS AN INDIVIDUAL, NOT A GROUP ASSIGNMENT. That means all code
