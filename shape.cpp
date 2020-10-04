@@ -4,6 +4,8 @@
 
 #include <cmath> // std::sin(), std::cos()
 
+using namespace glm;
+
 namespace graphics101 {
 
 void Cylinder::tessellate( Mesh& mesh )

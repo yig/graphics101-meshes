@@ -10,6 +10,7 @@
 
 // For glm::scale() and glm::translate().
 #include "glm/gtc/matrix_transform.hpp"
+using namespace glm;
 
 namespace {
 // Helper functions
@@ -78,7 +79,7 @@ void Mesh::applyTransformation( const mat4& transform ) {
     // Your code goes here.
     
     // Don't forget to multiply the normals by the inverse-transpose of `mat3(transform)`.
-    // Don't forget to glm::normalize() your normals, too.
+    // Don't forget to normalize() your normals, too.
     
     // A convenient way to iterate over positions with a modifiable reference is:
     // for( vec3& pos : positions ) { pos = ... }
