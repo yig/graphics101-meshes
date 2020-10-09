@@ -6,10 +6,11 @@ project(meshes)
 set (CMAKE_CXX_STANDARD 11)
 
 add_executable(meshes
-    main_meshes.cpp
-    halfedge.cpp
-    mesh.cpp
-    shape.cpp
+    src/main_meshes.cpp
+    src/halfedge.cpp
+    src/mesh.cpp
+    src/shape.cpp
 )
 
+target_include_directories(meshes PUBLIC include)
 target_link_libraries(meshes)
