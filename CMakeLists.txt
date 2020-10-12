@@ -43,8 +43,8 @@ add_custom_target(output
     COMMAND meshes torus 5 10 .25 torus-5-10-.25.obj
     COMMAND meshes torus 20 3 .1 torus-20-3-.1.obj
     COMMAND meshes torus 3 3 .25 torus-3-3-.25.obj
-    COMMAND meshes cube 2 square-2.obj
-    COMMAND meshes cube 10 square-10.obj
+    COMMAND meshes cube 2 cube-2.obj
+    COMMAND meshes cube 10 cube-10.obj
     COMMAND meshes normals angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted.obj
     COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted-halfedge.obj
     

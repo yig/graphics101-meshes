@@ -95,8 +95,8 @@ output subdirectory named `output`. You can do this automatically by running the
         ./meshes torus 5 10 .25 torus-5-10-.25.obj
         ./meshes torus 20 3 .1 torus-20-3-.1.obj
         ./meshes torus 3 3 .25 torus-3-3-.25.obj
-        ./meshes cube 2 square-2.obj
-        ./meshes cube 10 square-10.obj
+        ./meshes cube 2 cube-2.obj
+        ./meshes cube 10 cube-10.obj
         ./meshes normals angle_weighted cube_binary.obj cube_binary-angle_weighted.obj
         ./meshes normals_halfedge angle_weighted cube_binary.obj 
 
