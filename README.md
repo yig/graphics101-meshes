@@ -74,7 +74,7 @@ helper functions if you wish.
 great debugger.
 
 * Run the following commands. Copy your output `.obj` files into a new
-output subdirectory.
+output subdirectory named `output`. You can do this automatically by running the CMake target `output` via `make output` or `cmake --build . --target output`.
 
         ./meshes cylinder 5 10 cylinder-5-10.obj
         ./meshes cylinder 30 2 cylinder-30-2.obj
@@ -83,12 +83,11 @@ output subdirectory.
         ./meshes sphere 30 30 sphere-30-30.obj
         ./meshes sphere 3 1 sphere-3-1.obj
         ./meshes normals unweighted cube_binary.obj cube_binary-unweighted.obj
-        ./meshes normals angle_weighted cube_binary.obj cube_binary-angle_weighted.obj
         ./meshes normals_halfedge unweighted cube_binary.obj cube_binary-unweighted-halfedge.obj
-        ./meshes normals_halfedge angle_weighted cube_binary.obj cube_binary-angle_weighted-halfedge.obj
+        cube_binary-angle_weighted-halfedge.obj
         ./meshes normalize bunny.obj bunny-normalize.obj
 
-    (the following are bonus)
+    The following are bonus:
 
         ./meshes cone 5 10 cone-5-10.obj
         ./meshes cone 30 1 cone-30-1.obj
@@ -98,15 +97,23 @@ output subdirectory.
         ./meshes torus 3 3 .25 torus-3-3-.25.obj
         ./meshes cube 2 square-2.obj
         ./meshes cube 10 square-10.obj
+        ./meshes normals angle_weighted cube_binary.obj cube_binary-angle_weighted.obj
+        ./meshes normals_halfedge angle_weighted cube_binary.obj 
 
 * You are encouraged to share blooper images you create while implementing the assignment on Piazza.
 
 * Create a file named `Notes.txt` in the folder. Describe any known issues or extra features. Name people in the class who deserve a star for
 helping you (not by giving your their code!).
 
-* When done, zip your entire `meshes` directory along with the output
-subdirectory and your `Notes.txt` file as `hw05_lastname_firstname.zip`.
-Do not include your `build` directory. It is large and unnecessary.
+* When done, zip your entire `meshes` directory, your `Notes.txt` file,
+and your `output` directory as `meshes.zip`.
+There is a target named `zip` that will do this for you (`cmake --build . --target zip`)
+or you can use the `cpack` command from inside your build directory.
+The `zip` target will automatically run the `output` target, whereas you must
+manually run the `output` target if using `cpack`.
+If you create the zip file manually,
+do not include your `build` directory or the `examples` directory.
+They are large and unnecessary.
 Upload your solution to Blackboard before the deadline.
 
 * **THIS IS AN INDIVIDUAL, NOT A GROUP ASSIGNMENT. That means all code

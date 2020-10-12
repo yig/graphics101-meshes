@@ -1,16 +1,57 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.2)
 
 project(meshes)
 
 # We want C++11
 set (CMAKE_CXX_STANDARD 11)
 
-add_executable(meshes
-    src/main_meshes.cpp
-    src/halfedge.cpp
+set(SRCS
     src/mesh.cpp
+    src/types.h
+    src/shape.h
+    src/mesh.h
+    src/halfedge.cpp
+    src/halfedge.h
+    src/debugging.h
     src/shape.cpp
+    src/main_meshes.cpp
 )
 
+add_executable(meshes ${SRCS})
 target_include_directories(meshes PUBLIC include)
 target_link_libraries(meshes)
+
+# A CMake target to create the desired outputs
+# Create the output directory and remember its location.
+set(OUTPUT "${PROJECT_SOURCE_DIR}/output")
+file(MAKE_DIRECTORY "${OUTPUT}")
+set(EXAMPLES "${PROJECT_SOURCE_DIR}/examples")
+add_custom_target(output
+    COMMAND meshes cylinder 5 10 cylinder-5-10.obj
+    COMMAND meshes cylinder 30 2 cylinder-30-2.obj
+    COMMAND meshes cylinder 3 2 cylinder-3-2.obj
+    COMMAND meshes sphere 5 30 sphere-5-30.obj
+    COMMAND meshes sphere 30 30 sphere-30-30.obj
+    COMMAND meshes sphere 3 1 sphere-3-1.obj
+    COMMAND meshes normals unweighted "${EXAMPLES}/cube_binary.obj" cube_binary-unweighted.obj
+    COMMAND meshes normals_halfedge unweighted "${EXAMPLES}/cube_binary.obj" cube_binary-unweighted-halfedge.obj
+    COMMAND meshes normalize "${EXAMPLES}/bunny.obj" bunny-normalize.obj
+    # the following are bonus
+    COMMAND meshes cone 5 10 cone-5-10.obj
+    COMMAND meshes cone 30 1 cone-30-1.obj
+    COMMAND meshes cone 3 1 cone-3-1.obj
+    COMMAND meshes torus 5 10 .25 torus-5-10-.25.obj
+    COMMAND meshes torus 20 3 .1 torus-20-3-.1.obj
+    COMMAND meshes torus 3 3 .25 torus-3-3-.25.obj
+    COMMAND meshes cube 2 square-2.obj
+    COMMAND meshes cube 10 square-10.obj
+    COMMAND meshes normals angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted.obj
+    COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted-halfedge.obj
+    
+    WORKING_DIRECTORY "${OUTPUT}"
+    VERBATIM
+    )
+# This output target depends on the meshes target having been created.
+add_dependencies(output meshes)
+
+include("CMakeLists-zip.txt" OPTIONAL)

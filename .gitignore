@@ -3,6 +3,8 @@ Thumbs.db
 
 *~
 
+/output
+
 # Common CMake directory names
 /build*
 /Release

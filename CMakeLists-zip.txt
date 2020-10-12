@@ -1,0 +1,57 @@
+# A custom target to create a zip file to handin.
+
+# Version 1: A custom target named "zip". Run "make zip" or "cmake --build . --target zip"
+
+add_custom_target(zip COMMAND
+    ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.zip" --format=zip
+    ${SRCS}
+    "Notes.txt"
+    "CMakeLists.txt"
+    "CMakeLists-zip.txt"
+    "${OUTPUT}"
+    WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+    VERBATIM
+)
+add_dependencies(zip output)
+
+
+# Version 2: Describe the package to create. Run "make package" or "cpack"
+# This depends on output having been generated.
+# UPDATE: This doesn't work. It is difficult to make install depend on byproducts if they aren't part of ALL.
+# install(TARGETS output)
+
+# Install everything but subtract things we don't want.
+# The trailing slash after "${PROJECT_SOURCE_DIR}/" prevents
+# an extra layer of directories.
+# install(DIRECTORY "${PROJECT_SOURCE_DIR}/"
+#     DESTINATION .
+#     PATTERN ".git*" EXCLUDE
+#     PATTERN ".DS_Store" EXCLUDE
+#     # Qt Creator creates .user files
+#     PATTERN "*.user" EXCLUDE
+#     PATTERN "build*" EXCLUDE
+#     PATTERN "examples" EXCLUDE
+#     PATTERN "include" EXCLUDE
+#     PATTERN "docs" EXCLUDE
+#     PATTERN "README.md" EXCLUDE
+# )
+
+# Install only what we specify.
+install(FILES
+    ${SRCS}
+    "Notes.txt"
+    "CMakeLists.txt"
+    "CMakeLists-zip.txt"
+    DESTINATION .
+)
+# No trailing slash after "${OUTPUT}" preserves the "output" directory in the zip.
+install(DIRECTORY "${OUTPUT}"
+    DESTINATION .
+    FILES_MATCHING PATTERN "*.obj"
+)
+
+set(CPACK_GENERATOR "ZIP")
+set(CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}")
+set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+set(CPACK_VERBATIM_VARIABLES YES)
+include(CPack)
