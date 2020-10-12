@@ -38,11 +38,14 @@ add_dependencies(zip output)
 
 # Install only what we specify.
 install(FILES
-    ${SRCS}
     "Notes.txt"
     "CMakeLists.txt"
     "CMakeLists-zip.txt"
     DESTINATION .
+)
+install(FILES
+    ${SRCS}
+    DESTINATION "src"
 )
 # No trailing slash after "${OUTPUT}" preserves the "output" directory in the zip.
 install(DIRECTORY "${OUTPUT}"
