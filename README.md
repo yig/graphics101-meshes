@@ -305,6 +305,12 @@ Tips
 
 * There is some relevant pseudocode in the `docs` directory. Consider that a cylinder, sphere, cone, and torus are all rectangles rolled up in different ways, with one edge glued (two in the case of the torus) and possible a north or south pole attached.
 
+    * The `make_mesh_grid()` pseudocode is an example showing you how to create a square out of triangles, where the number of triangles can be specified by the user. The square is a 2D square in the x,y plane, so all vertices have z=0. This pseudocode should help you understand how to create a mesh, but it is a simpler scenario that what you have to do in this project in two major ways.
+        * One difference is that you can make a square without defining a separate explicit coordinate system for the shape, like latitude and longitude for spherical coordinates or theta and z for cylindrical coordinates. That's because x,y coordinates parameterize (or walk along) both the square and the output positions simultaneously. In the general case, you iterate over the explicit coordinates (e.g. spherical or cylindrical) and use a formula to convert from, say, latitude and longitude to x,y,z coordinates. Slices and stacks tell you how many times to iterate along the two explicit dimensions (e.g. latitude and longitude). For a cylinder, you can think of this as rolling the square into a tube.
+        * The second difference is that a sphere and a cylinder are watertight shapes. You will need to create faces between the last and first slice. For the sphere, you will also need to create an extra vertex at the top and bottom (the north and south poles) and then faces to glue the top and bottom stacks to those vertices.
+
+You need to fill our `mesh.normals` when tessellating these shapes. The `computeNormals()` function is for arbitrary triangle meshes you load which don't already have normals. When tessellating, you know the shape and so you have a formula for the correct normal at each position. This is better than computing the normal at each face or by averaging face normals.
+
 * For debugging an OBJ that you program saves, I highly recommend the free
 program [meshLab](http://www.meshlab.net/) ([http://www.meshlab.net/](http://www.meshlab.net/)):
 
