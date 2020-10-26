@@ -35,6 +35,8 @@ add_custom_target(output
     COMMAND meshes sphere 3 1 sphere-3-1.obj
     COMMAND meshes normals unweighted "${EXAMPLES}/cube_binary.obj" cube_binary-unweighted.obj
     COMMAND meshes normals_halfedge unweighted "${EXAMPLES}/cube_binary.obj" cube_binary-unweighted-halfedge.obj
+    COMMAND meshes normals unweighted "${EXAMPLES}/bunny.obj" bunny-unweighted.obj
+    COMMAND meshes normals_halfedge unweighted "${EXAMPLES}/bunny.obj" bunny-unweighted-halfedge.obj
     COMMAND meshes normalize "${EXAMPLES}/bunny.obj" bunny-normalize.obj
     # the following are bonus
     COMMAND meshes cone 5 10 cone-5-10.obj
@@ -47,6 +49,8 @@ add_custom_target(output
     COMMAND meshes cube 10 cube-10.obj
     COMMAND meshes normals angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted.obj
     COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted-halfedge.obj
+    COMMAND meshes normals angle_weighted "${EXAMPLES}/bunny.obj" bunny-angle_weighted.obj
+    COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/bunny.obj" bunny-angle_weighted-halfedge.obj
     
     WORKING_DIRECTORY "${OUTPUT}"
     VERBATIM

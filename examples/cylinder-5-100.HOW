@@ -1,0 +1,6 @@
+./feeding cylinder 5 100 cylinder-5-100.obj
+./feeding normals unweighted cylinder-5-100.obj cylinder-5-100-unweighted.obj
+./feeding normals_halfedge angle_weighted cylinder-5-100.obj cylinder-5-100-angleweighted.obj
+./feeding normals angle_weighted cylinder-5-100.obj cylinder-5-100-angleweighted.obj
+./feeding normals_halfedge angle_weighted cylinder-5-100.obj cylinder-5-100-angleweighted_halfedge.obj
+./feeding normals_halfedge unweighted cylinder-5-100.obj cylinder-5-100-unweighted_halfedge.obj

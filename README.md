@@ -84,7 +84,8 @@ output subdirectory named `output`. You can do this automatically by running the
         ./meshes sphere 3 1 sphere-3-1.obj
         ./meshes normals unweighted cube_binary.obj cube_binary-unweighted.obj
         ./meshes normals_halfedge unweighted cube_binary.obj cube_binary-unweighted-halfedge.obj
-        cube_binary-angle_weighted-halfedge.obj
+        ./meshes normals unweighted bunny.obj bunny-unweighted.obj
+        ./meshes normals_halfedge unweighted bunny.obj bunny-unweighted-halfedge.obj
         ./meshes normalize bunny.obj bunny-normalize.obj
 
     The following are bonus:
@@ -98,7 +99,9 @@ output subdirectory named `output`. You can do this automatically by running the
         ./meshes cube 2 cube-2.obj
         ./meshes cube 10 cube-10.obj
         ./meshes normals angle_weighted cube_binary.obj cube_binary-angle_weighted.obj
-        ./meshes normals_halfedge angle_weighted cube_binary.obj 
+        ./meshes normals_halfedge angle_weighted cube_binary.obj cube_binary-angle_weighted-halfedge.obj
+        ./meshes normals angle_weighted bunny.obj bunny-angle_weighted.obj
+        ./meshes normals_halfedge angle_weighted bunny.obj bunny-angle_weighted-halfedge.obj
 
 * You are encouraged to share blooper images you create while implementing the assignment on Piazza.
 
