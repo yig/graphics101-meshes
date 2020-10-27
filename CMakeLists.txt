@@ -30,27 +30,44 @@ add_custom_target(output
     COMMAND meshes cylinder 5 10 cylinder-5-10.obj
     COMMAND meshes cylinder 30 2 cylinder-30-2.obj
     COMMAND meshes cylinder 3 2 cylinder-3-2.obj
+    
     COMMAND meshes sphere 5 30 sphere-5-30.obj
     COMMAND meshes sphere 30 30 sphere-30-30.obj
     COMMAND meshes sphere 3 1 sphere-3-1.obj
+    
     COMMAND meshes normals unweighted "${EXAMPLES}/cube_binary.obj" cube_binary-unweighted.obj
     COMMAND meshes normals_halfedge unweighted "${EXAMPLES}/cube_binary.obj" cube_binary-unweighted-halfedge.obj
+    
     COMMAND meshes normals unweighted "${EXAMPLES}/bunny.obj" bunny-unweighted.obj
     COMMAND meshes normals_halfedge unweighted "${EXAMPLES}/bunny.obj" bunny-unweighted-halfedge.obj
+    
+    COMMAND meshes normals unweighted "${EXAMPLES}/cylinder_irregular.obj" cylinder_irregular-unweighted.obj
+    COMMAND meshes normals_halfedge unweighted "${EXAMPLES}/cylinder_irregular.obj" cylinder_irregular-unweighted-halfedge.obj
+    
     COMMAND meshes normalize "${EXAMPLES}/bunny.obj" bunny-normalize.obj
+    
+    COMMAND meshes transform 0 0 1 0 0 1 0 0 -.1 0 0 0 0 0 0 1 cylinder-30-2.obj cylinder-30-2-transform-yzsquash.obj
+    
     # the following are bonus
     COMMAND meshes cone 5 10 cone-5-10.obj
     COMMAND meshes cone 30 1 cone-30-1.obj
     COMMAND meshes cone 3 1 cone-3-1.obj
+    
     COMMAND meshes torus 5 10 .25 torus-5-10-.25.obj
     COMMAND meshes torus 20 3 .1 torus-20-3-.1.obj
     COMMAND meshes torus 3 3 .25 torus-3-3-.25.obj
+    
     COMMAND meshes cube 2 cube-2.obj
     COMMAND meshes cube 10 cube-10.obj
+    
     COMMAND meshes normals angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted.obj
     COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/cube_binary.obj" cube_binary-angle_weighted-halfedge.obj
+    
     COMMAND meshes normals angle_weighted "${EXAMPLES}/bunny.obj" bunny-angle_weighted.obj
     COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/bunny.obj" bunny-angle_weighted-halfedge.obj
+    
+    COMMAND meshes normals angle_weighted "${EXAMPLES}/cylinder_irregular.obj" cylinder_irregular-angle_weighted.obj
+    COMMAND meshes normals_halfedge angle_weighted "${EXAMPLES}/cylinder_irregular.obj" cylinder_irregular-angle_weighted-halfedge.obj
     
     WORKING_DIRECTORY "${OUTPUT}"
     VERBATIM

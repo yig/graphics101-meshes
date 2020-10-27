@@ -36,6 +36,8 @@ void usage( const char* argv0 ) {
     std::cerr << "Usage: " << argv0 << " normals_halfedge weights input.obj output.obj (weights must be either 'unweighted' or 'angle_weighted')\n";
     std::cerr << '\n';
     std::cerr << "Usage: " << argv0 << " normalize input.obj output.obj\n";
+    std::cerr << '\n';
+    std::cerr << "Usage: " << argv0 << " transform M11 M21 M31 M41 M12 M22 M32 M42 M13 M23 M33 M43 M14 M24 M34 M44 input.obj output.obj (Mij are the elements of a 4x4 matrix)\n";
     std::exit(-1);
 }
 
@@ -209,6 +211,35 @@ int main( int argc, char* argv[] ) {
         Mesh mesh;
         mesh.loadFromOBJ( inpath );
         const mat4 transform = mesh.normalizingTransformation();
+        mesh.applyTransformation( transform );
+        
+        const bool success = mesh.writeToOBJ( outpath );
+        if( !success ) {
+            std::cerr << "ERROR: Unable to write OBJ to path: " << outpath << '\n';
+        } else {
+            std::cout << "Saved: " << outpath << std::endl;
+        }
+    }
+    else if( command == "transform" ) {
+        if( argc != 20 ) usage( argv[0] );
+        
+        const char* inpath( argv[argc-2] );
+        const char* outpath( argv[argc-1] );
+        
+        Mesh mesh;
+        mesh.loadFromOBJ( inpath );
+        mat4 transform;
+        for( int j = 0; j < 4; ++j ) {
+            for( int i = 0; i < 4; ++i ) {
+                bool success;
+                const real Mij = strto<real>( argv[2+i+4*j], success );
+                if( !success ) {
+                    std::cerr << "ERROR: Mij must be floating point numbers.\n";
+                    usage( argv[0] );
+                }
+                transform[i][j] = Mij;
+            }
+        }
         mesh.applyTransformation( transform );
         
         const bool success = mesh.writeToOBJ( outpath );

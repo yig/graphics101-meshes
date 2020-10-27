@@ -66,6 +66,8 @@ like:
         Usage: ./meshes normals_halfedge weights input.obj output.obj (weights must be either 'unweighted' or 'angle_weighted')
         
         Usage: ./meshes normalize input.obj output.obj
+        
+        Usage: ./meshes transform M11 M21 M31 M41 M12 M22 M32 M42 M13 M23 M33 M43 M14 M24 M34 M44 input.obj output.obj (Mij are the elements of a 4x4 matrix)
 
 * Add your code to `mesh.cpp`, `shape.cpp`, and `halfedge.cpp`. You may add
 helper functions if you wish.
@@ -86,7 +88,10 @@ output subdirectory named `output`. You can do this automatically by running the
         ./meshes normals_halfedge unweighted cube_binary.obj cube_binary-unweighted-halfedge.obj
         ./meshes normals unweighted bunny.obj bunny-unweighted.obj
         ./meshes normals_halfedge unweighted bunny.obj bunny-unweighted-halfedge.obj
+        ./meshes normals unweighted cylinder_irregular.obj cylinder_irregular-unweighted.obj
+        ./meshes normals_halfedge unweighted cylinder_irregular.obj cylinder_irregular-unweighted-halfedge.obj
         ./meshes normalize bunny.obj bunny-normalize.obj
+        ./meshes transform 0 0 1 0 0 1 0 0 -.1 0 0 0 0 0 0 1 cylinder-30-2.obj cylinder-30-2-transform-yzsquash.obj
 
     The following are bonus:
 
@@ -102,6 +107,8 @@ output subdirectory named `output`. You can do this automatically by running the
         ./meshes normals_halfedge angle_weighted cube_binary.obj cube_binary-angle_weighted-halfedge.obj
         ./meshes normals angle_weighted bunny.obj bunny-angle_weighted.obj
         ./meshes normals_halfedge angle_weighted bunny.obj bunny-angle_weighted-halfedge.obj
+        ./meshes normals angle_weighted cylinder_irregular.obj cylinder_irregular-angle_weighted.obj
+        ./meshes normals_halfedge angle_weighted cylinder_irregular.obj cylinder_irregular-angle_weighted-halfedge.obj
 
 * You are encouraged to share blooper images you create while implementing the assignment on Piazza.
 
