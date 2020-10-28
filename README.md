@@ -237,7 +237,7 @@ of 6 normals (one per face). There will be a total of
 `m_slices_edge*m_slices_edge` texture coordinates.
 
 * **(30 points total)** Mesh normals. Your code goes in `mesh.cpp` and (a tiny
-bit) `halfedges.cpp`. Given a Mesh object with positions but no normals,
+bit) `halfedge.cpp`. Given a Mesh object with positions but no normals,
 compute a normal for each position by averaging the (flat) normal of
 each triangle touching the vertex. You can do this by initializing a
 running tally of the average normal for each vertex. Each triangle uses
@@ -266,7 +266,7 @@ The function signature is:
 
         Note that the half-edge function `.vertex_face_neighbors()` is not
 written for you. You must fill in the code for this function in
-`halfedges.cpp`. It is a very short function. Follow the provided outline.
+`halfedge.cpp`. It is a very short function. Follow the provided outline.
 Consult `HalfEdgeTriMesh::vertex_vertex_neighbors()` for reference; it
 differs from `.vertex_face_neighbors()` by exactly one line.
 
