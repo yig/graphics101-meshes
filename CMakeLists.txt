@@ -46,7 +46,7 @@ add_custom_target(output
     
     COMMAND meshes normalize "${EXAMPLES}/bunny.obj" bunny-normalize.obj
     
-    COMMAND meshes transform 0 0 1 0 0 1 0 0 -.1 0 0 0 0 0 0 1 cylinder-30-2.obj cylinder-30-2-transform-yzsquash.obj
+    COMMAND meshes transform 0 0 1 0 0 1 0 0 -.1 0 0 0 0 0 0 1 "${EXAMPLES}/cylinder-30-2.obj" cylinder-30-2-transform-yzsquash.obj
     
     # the following are bonus
     COMMAND meshes cone 5 10 cone-5-10.obj
