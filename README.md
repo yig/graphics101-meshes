@@ -48,7 +48,8 @@ Getting Started & Handing In:
 * Follow the instructions to install a working development environment: <https://github.com/yig/graphics101> . You do not need to install Qt or any other external libraries for this assignment.
 
 * The program is a command line program. The code for this
-project makes use of only the C++ standard library and `glm`.
+project makes use of only the C++ standard library and `glm`,
+a library which provides the [vector and matrix data types from the OpenGL Shading Language (GLSL)](https://www.khronos.org/opengl/wiki/Data_Type_(GLSL)).
 
 * You are encouraged to write helper functions as you like.
 
