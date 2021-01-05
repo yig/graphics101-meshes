@@ -53,8 +53,10 @@ install(DIRECTORY "${OUTPUT}"
     FILES_MATCHING PATTERN "*.obj"
 )
 
+## Lie to cpack about our generator so it doesn't build `preinstall`.
+set(CPACK_CMAKE_GENERATOR Ninja)
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}")
-set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY ON)
 set(CPACK_VERBATIM_VARIABLES YES)
 include(CPack)
