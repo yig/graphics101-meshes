@@ -192,7 +192,7 @@ south pole), the same number of normals as positions, and
 `(m_slices+1)*m_stacks + 2` texture coordinates (for the same reason as
 the cylinder, +2 for the north and south poles).
 
-    * **(bonus, half credit)** Cone. The cone whose axis runs from (0,0,0) to
+    * **(bonus, quarter credit)** Cone. The cone whose axis runs from (0,0,0) to
 (0,0,1) with radius 1. The cone has no bottom cap. The first texture
 coordinates runs around the circle of the cone. The second texture
 coordinate runs up the cone. It is equal to z.
@@ -205,7 +205,7 @@ normals (since each stack has the same normals), and
 `(m_slices+1)*m_stacks + 1` texture coordinates (for the same reason as
 the cylinder and sphere, +1 for the top point).
 
-    * **(bonus, half credit)** Torus. A torus is a donut. For our "unit"
+    * **(bonus, quarter credit)** Torus. A torus is a donut. For our "unit"
 torus, the center of the doughy tube is the unit circle in the xy plane
 with radius 1. If you cut into the tube of the donut, you will cut
 through a circular cross section. The cross section has radius
@@ -225,7 +225,7 @@ texture coordinate of each circle, tube and cross section, must be
 2π/2π = 1 and so can't be 0 like the first or else the texture
 would tear).
 
-    * **(bonus, half credit)** Cube. A unit cube whose sides are axis-aligned
+    * **(bonus, quarter credit)** Cube. A unit cube whose sides are axis-aligned
 and whose corners are (-1,-1,-1) and (1,1,1). Each square face should
 have the entire texture mapped onto it. There is a single member
 variable, `int m_slices_edge`. Each edge of your cube should have
