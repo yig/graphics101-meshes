@@ -18,9 +18,6 @@ structure. Your tessellation will create shapes like this:
 ![cone](docs/images/cone-30-3-snapshot.png)
 ![torus](docs/images/torus-30-30-.25-snapshot.png)
 
-Background reading for this assignment: Chapter 12.1 *Triangle Meshes* from *Fundamentals of Computer Graphics (4th edition)* by Steve Marschner and Peter Shirley.
-
-
 Goals:
 ------
 
@@ -39,6 +36,15 @@ positions.
 * Understand how to work with a half-edge data structure.
 
 * Become more comfortable with C++.
+
+Background
+---------
+
+* Book (FoCG,4e): Chapter 12.1 *Triangle Meshes*.
+* Video: "Lecture 11: Geometry Processing" and "Assignment 5: Meshes"
+* Quiz: Mesh Processing
+
+(FoCG,4e is *Fundamentals of Computer Graphics (4th edition)* by Steve Marschner and Peter Shirley, 4th edition.)
 
 Getting Started & Handing In:
 -----------------------------
