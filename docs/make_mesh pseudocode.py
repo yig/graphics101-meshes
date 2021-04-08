@@ -19,11 +19,11 @@ def make_mesh_grid( int num_x_vertices, int num_y_vertices ):
     ## and create positions:
     for( int xi = 0; xi < num_x_vertices; ++xi ):
         ## The xi-th coordinate will be x.
-        float x = float(xi)/num_x_vertices
+        float x = float(xi)/(num_x_vertices-1)
         
         for( int yi = 0; yi < num_y_vertices; ++yi ):
             ## The yi-th coordinate will be y.
-            float y = float(yi)/num_y_vertices
+            float y = float(yi)/(num_y_vertices-1)
             
             ## Create the position.
             positions.append( ( x, y, 0 ) )
