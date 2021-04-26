@@ -410,6 +410,9 @@ You can create a translation matrix by setting the fourth column of an
 identity `mat4 t` via `t[3] = vec4( x,y,z,1.0 )` or, equivalently,
 `t[3] = vec4( p,1.0 )`, where `p` is a `vec3`.
 
+* The `glm` math library has many useful functions. It implements the [vector and matrix data types from the OpenGL Shading Language (GLSL)](https://www.khronos.org/opengl/wiki/Data_Type_(GLSL)).
+In other projects, you've used it to `normalize()` a vector and compute the `dot()` product between two vectors. You can also use it to compute the `cross()` product of two vectors.
+
 * `glm::min()` and `glm::max()` operate component-wise. That means that
 `glm::min( vec2( 5.0, -3.0, vec2( 1.0, 0.0 ) )` is `vec2( 1.0, -3.0 )`. This
 is useful for computing the axis-aligned bounding box of a set of
