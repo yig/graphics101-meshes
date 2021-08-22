@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.14)
 
-project(meshes)
+project(meshes LANGUAGES CXX C)
 
 # We want C++11
 set (CMAKE_CXX_STANDARD 11)
@@ -17,9 +17,12 @@ set(SRCS
     src/main_meshes.cpp
 )
 
+include(cmake/CPM.cmake)
+CPMAddPackage("https://github.com/g-truc/glm.git#0.9.9.8")
+
 add_executable(meshes ${SRCS})
 target_include_directories(meshes PUBLIC include)
-target_link_libraries(meshes)
+target_link_libraries(meshes glm::glm)
 
 # A CMake target to create the desired outputs
 # Create the output directory and remember its location.
