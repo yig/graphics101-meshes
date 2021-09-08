@@ -42,7 +42,22 @@ namespace graphics101 {
         ray3( const vec3& a_p, const vec3& a_d ) : p( a_p ), d( a_d ) {}
     };
     
-    typedef ivec3 Triangle;
+    struct Triangle {
+        // Indices for the three corners.
+        int A = -1;
+        int B = -1;
+        int C = -1;
+        
+        // Array-like accessor for the three corners.
+        int& operator[]( const int corner ) { return (&A)[corner]; }
+        const int& operator[]( const int corner ) const { return (&A)[corner]; }
+        
+        // Construct a triangle from the three corner indices.
+        Triangle( const int A_, const int B_, const int C_ ) : A( A_ ), B( B_ ), C( C_ ) {}
+        
+        // Compare two triangles.
+        bool operator==( const Triangle& rhs ) const { return A == rhs.A && B == rhs.B && C == rhs.C; }
+    };
     typedef std::vector< Triangle > TriangleVec;
     
     typedef std::string string;
