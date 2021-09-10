@@ -49,8 +49,10 @@ namespace graphics101 {
         int C = -1;
         
         // Array-like accessor for the three corners.
-        int& operator[]( const int corner ) { return (&A)[corner]; }
-        const int& operator[]( const int corner ) const { return (&A)[corner]; }
+        // Indices outside [0,2] will use modular arithmetic to wrap around:
+        // [-3,-2,-1,0,1,2,3,4,5,6] maps to [0,1,2,0,1,2,0,1,2]
+        int& operator[]( const int corner ) { return (&A)[((corner % 3) + 3)%3]; }
+        const int& operator[]( const int corner ) const { return (&A)[((corner % 3) + 3)%3]; }
         
         // Construct a triangle from the three corner indices.
         Triangle( const int A_, const int B_, const int C_ ) : A( A_ ), B( B_ ), C( C_ ) {}
