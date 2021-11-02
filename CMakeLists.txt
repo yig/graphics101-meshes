@@ -14,15 +14,29 @@ set(SRCS
     src/halfedge.h
     src/debugging.h
     src/shape.cpp
-    src/main_meshes.cpp
 )
 
 include(cmake/CPM.cmake)
 CPMAddPackage("https://github.com/g-truc/glm.git#0.9.9.8")
 
-add_executable(meshes ${SRCS})
-target_include_directories(meshes PUBLIC include)
-target_link_libraries(meshes glm::glm)
+## Put all our code (except main_meshes.cpp) in a library so that testers can also use it without recompiling.
+add_library(meshlib OBJECT ${SRCS})
+target_include_directories(meshlib PUBLIC include)
+target_link_libraries(meshlib glm::glm)
+
+## The main meshes executable
+add_executable(meshes src/main_meshes.cpp)
+target_link_libraries(meshes meshlib)
+
+## On Windows, the following line may help build a static binary that can be called from the autograder.
+## Some platforms can't build entirely static binaries, so I'm leaving it off by default.
+if(WIN32)
+    target_link_libraries(meshes -static)
+endif()
+
+## Add tests
+enable_testing()
+add_subdirectory( test )
 
 # A CMake target to create the desired outputs
 # Create the output directory and remember its location.
