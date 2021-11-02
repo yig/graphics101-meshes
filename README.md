@@ -82,7 +82,13 @@ helper functions if you wish.
 * Build and run and test that it is working correctly. Qt Creator has a
 great debugger.
 
-* Check your work with the command line tests by running `ctest --verbose`. This will test whether the following functions are working correctly: `computeNormals()`, `computeNormalsHalfEdge()`, `normalizingTransformation()`, and `applyTransformation()`.
+* Check your work with the command line tests by running `ctest --verbose`. This will test whether the following functions are working correctly:
+    * `computeNormals()`
+    * `computeNormalsHalfEdge()`
+    * `normalizingTransformation()`
+    * `applyTransformation()`
+    * `Cylinder::tessellate()`
+    * `Sphere::tessellate()`
 
 * Run the following commands. Copy your output `.obj` files into a new
 output subdirectory named `output`. You can do this automatically by running the CMake target `output` via `make output` or `cmake --build . --target output`.
