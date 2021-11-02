@@ -53,7 +53,7 @@ real compareMeshToTruth( const Mesh& mesh, const Mesh& truth ) {
 TEST_CASE( "Compute Normals Test (Not HalfEdge, Unweighted)" ) {
     Mesh mesh;
 #if GENERATE_DATA
-    mesh.loadFromOBJ( "../examples/cylinder_irregular.obj.obj" );
+    mesh.loadFromOBJ( "../examples/cylinder_irregular.obj" );
     PrintToInclude( "getComputeNormalsInput", "computeNormals_test_input.h", mesh );
 #else
     mesh = getComputeNormalsInput();
@@ -72,7 +72,7 @@ TEST_CASE( "Compute Normals Test (Not HalfEdge, Unweighted)" ) {
 TEST_CASE( "Compute Normals Test (Not HalfEdge, Weighted)" ) {
     Mesh mesh;
 #if GENERATE_DATA
-    mesh.loadFromOBJ( "../examples/cylinder_irregular.obj.obj" );
+    mesh.loadFromOBJ( "../examples/cylinder_irregular.obj" );
     PrintToInclude( "getComputeNormalsInput", "computeNormals_test_input.h", mesh );
 #else
     mesh = getComputeNormalsInput();
