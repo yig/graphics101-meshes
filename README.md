@@ -87,8 +87,8 @@ great debugger.
     * `computeNormalsHalfEdge()`
     * `normalizingTransformation()`
     * `applyTransformation()`
-    * `Cylinder::tessellate()`
-    * `Sphere::tessellate()`
+    * `Cylinder::tessellate()` (partial coverage; doesn't test whether triangles connect the right vertices)
+    * `Sphere::tessellate()` (partial coverage; doesn't test whether triangles connect the right vertices)
 
 * Run the following commands. Copy your output `.obj` files into a new
 output subdirectory named `output`. You can do this automatically by running the CMake target `output` via `make output` or `cmake --build . --target output`.
