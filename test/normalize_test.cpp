@@ -15,7 +15,7 @@ real MaxAbsoluteValue( const mat4& mat ) {
     
     for( int i = 0; i < 4; ++i ) {
         for( int j = 0; j < 4; ++j ) {
-            result = std::max( result, abs( mat[i][j] ) );
+            result = glm::max( result, glm::abs( mat[i][j] ) );
         }
     }
     
