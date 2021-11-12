@@ -13,6 +13,7 @@ void Cylinder::tessellate( Mesh& mesh )
     mesh.clear();
     
     // Your code goes here.
+    auto ij2index = [&]( int i, int j ) { return -1; };
 }
 
 void Sphere::tessellate( Mesh& mesh )
@@ -20,6 +21,7 @@ void Sphere::tessellate( Mesh& mesh )
     mesh.clear();
     
     // Your code goes here.
+    auto ij2index = [&]( int i, int j ) { return -1; };
 }
 
 void Cone::tessellate( Mesh& mesh )
@@ -27,6 +29,7 @@ void Cone::tessellate( Mesh& mesh )
     mesh.clear();
     
     // Your code goes here.
+    auto ij2index = [&]( int i, int j ) { return -1; };
 }
 
 void Torus::tessellate( Mesh& mesh )
@@ -34,6 +37,7 @@ void Torus::tessellate( Mesh& mesh )
     mesh.clear();
     
     // Your code goes here.
+    auto ij2index = [&]( int i, int j ) { return -1; };
 }
 
 void Cube::tessellate( Mesh& mesh )
