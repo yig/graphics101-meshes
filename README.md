@@ -46,6 +46,12 @@ Background
 
 (FoCG,4e is *Fundamentals of Computer Graphics (4th edition)* by Steve Marschner and Peter Shirley, 4th edition.)
 
+If you love this topic and want to go *beyond*, here are some free, online resources:
+
+* Alec Jacobson's Geometry Processing course: <https://github.com/alecjacobson/geometry-processing>
+* Keenan Crane's courses on Discrete Differential Geometry: https://www.cs.cmu.edu/~kmcrane/Projects/DDG/ or 
+https://brickisland.net/DDGSpring2021/calendar/
+
 Getting Started & Handing In:
 -----------------------------
 
