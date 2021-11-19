@@ -63,7 +63,7 @@ public:
     
     // Build the half-edge data structure from `triangles`.
     // Call unordered_edges_from_triangles( triangles ) to get a vector of undirected edges.
-    void build( const unsigned long num_vertices, const TriangleVec& triangles, const Edges& edges );
+    void build( const unsigned long num_vertices, const std::vector< Triangle >& triangles, const Edges& edges );
     
     // Clear the data-structure. You can call build() again after this.
     void clear();
@@ -119,7 +119,7 @@ private:
     directed_edge2halfedge_index_map_t m_directed_edge2he_index;
 };
 
-void unordered_edges_from_triangles( const TriangleVec& triangles, HalfEdgeTriMesh::Edges& edges_out );
+void unordered_edges_from_triangles( const std::vector< Triangle >& triangles, HalfEdgeTriMesh::Edges& edges_out );
 
 }
 

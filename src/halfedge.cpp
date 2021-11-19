@@ -148,7 +148,7 @@ void HalfEdgeTriMesh::clear()
     m_directed_edge2he_index.clear();
 }
 
-void HalfEdgeTriMesh::build( const unsigned long num_vertices, const TriangleVec& triangles, const Edges& edges )
+void HalfEdgeTriMesh::build( const unsigned long num_vertices, const std::vector< Triangle >& triangles, const Edges& edges )
 {
     /*
     Generates all half edge data structures for the mesh given by its vertices 'self.vs'
@@ -310,7 +310,7 @@ HalfEdgeTriMesh::HalfEdgeIndex HalfEdgeTriMesh::directed_edge2he_index( const In
     return result->second;
 }
 
-void unordered_edges_from_triangles( const TriangleVec& triangles, HalfEdgeTriMesh::Edges& edges_out )
+void unordered_edges_from_triangles( const std::vector< Triangle >& triangles, HalfEdgeTriMesh::Edges& edges_out )
 {
     typedef HalfEdgeTriMesh::Index Index;
     typedef HalfEdgeTriMesh::Edge Edge;
