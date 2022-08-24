@@ -16,8 +16,15 @@ set(SRCS
     src/shape.cpp
 )
 
-include(cmake/CPM.cmake)
-CPMAddPackage("https://github.com/g-truc/glm.git#0.9.9.8")
+include(FetchContent)
+FetchContent_Declare(
+    glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
+    GIT_TAG 0.9.9.8
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE
+    )
+FetchContent_MakeAvailable( glm )
 
 ## Put all our code (except main_meshes.cpp) in a library so that testers can also use it without recompiling.
 add_library(meshlib OBJECT ${SRCS})
