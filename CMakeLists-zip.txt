@@ -5,6 +5,7 @@
 add_custom_target(zip COMMAND
     ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.zip" --format=zip
     ${SRCS}
+    "src/main_meshes.cpp"
     "Notes.txt"
     "CMakeLists.txt"
     "CMakeLists-zip.txt"
@@ -45,6 +46,7 @@ install(FILES
 )
 install(FILES
     ${SRCS}
+    "src/main_meshes.cpp"
     DESTINATION "src"
 )
 # No trailing slash after "${OUTPUT}" preserves the "output" directory in the zip.
