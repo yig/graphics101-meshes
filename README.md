@@ -88,7 +88,7 @@ helper functions if you wish.
 * Build and run and test that it is working correctly. Qt Creator has a
 great debugger.
 
-* Check your work with the command line tests by running `ctest --verbose`. This will test whether the following functions are working correctly:
+* Check your work with the command line tests by running `ctest --verbose -C Debug`. This will test whether the following functions are working correctly:
     * `computeNormals()`
     * `computeNormalsHalfEdge()`
     * `normalizingTransformation()`
